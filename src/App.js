@@ -1,52 +1,49 @@
-import ExpenseItem from "./components/Expenseitem";
+import logo from "./logo.svg";
+import "./App.css";
+import ExpenseItem from "./components/Expense/Expenseitem";
+import ExpenseDate from "./components/Expense/ExpenseDate";
+import Expenses from "./components/Expense/Expenses";
+import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
-  const expense = [
+  const expenses = [
     {
       id: "e1",
-      title: "Car Insurance",
-      amount: 294.67,
-      date: new Date(),
+      title: "New Phone",
+      amount: 99.67,
+      date: new Date(2024, 1, 1),
     },
     {
       id: "e2",
-      title: "New Phone",
-      amount: 500.0,
-      date: new Date(),
+      title: "Car Insurance",
+      amount: 294.67,
+      date: new Date(2023, 1, 1),
     },
     {
       id: "e3",
-      title: "Toilet Papper",
+      title: "Toilet Paper",
       amount: 80.0,
-      date: new Date(),
+      date: new Date(2022, 5, 6),
     },
     {
       id: "e4",
+      title: "Desk (Wooden)",
+      amount: 120.67,
+      date: new Date(2024, 3, 3),
+    },
+    {
+      id: "e5",
       title: "Udemy Course",
       amount: 9.9,
-      date: new Date(),
+      date: new Date(2012, 4, 4),
     },
   ];
 
   return (
     <div>
-      <ExpenseItem
-        title={expense[0].title}
-        amount={expense[0].amount}
-        date={expense[0].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={expense[1].title}
-        amount={expense[1].amount}
-        date={expense[1].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={expense[2].title}
-        amount={expense[2].amount}
-        date={expense[2].date}
-      ></ExpenseItem>
+      <NewExpense></NewExpense>
+      <Expenses items={expenses}></Expenses>
     </div>
   );
 }
-
 export default App;
