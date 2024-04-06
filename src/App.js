@@ -1,12 +1,11 @@
-import logo from "./logo.svg";
 import "./App.css";
-import ExpenseItem from "./components/Expense/Expenseitem";
-import ExpenseDate from "./components/Expense/ExpenseDate";
+import React, { useState } from "react";
+
 import Expenses from "./components/Expense/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
-  const expenses = [
+  const DUMMY_EXPENSES = [
     {
       id: "e1",
       title: "New Phone",
@@ -38,10 +37,21 @@ function App() {
       date: new Date(2012, 4, 4),
     },
   ];
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
+  const addExpenseEventHandler = (expense) => {
+    const expenseData = {
+      ...expense,
+      id: Math.random().toString(),
+    };
+
+    setExpenses((prevState) => {
+      return [expenseData, ...prevState];
+    });
+  };
   return (
     <div>
-      <NewExpense></NewExpense>
+      <NewExpense onAddExpense={addExpenseEventHandler}></NewExpense>
       <Expenses items={expenses}></Expenses>
     </div>
   );
